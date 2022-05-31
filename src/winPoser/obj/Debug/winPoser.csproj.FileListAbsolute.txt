@@ -1,0 +1,15 @@
+c:\users\edgar.carrizales\source\repos\winPoser\winPoser\bin\Debug\winPoser.exe.config
+c:\users\edgar.carrizales\source\repos\winPoser\winPoser\bin\Debug\winPoser.exe
+c:\users\edgar.carrizales\source\repos\winPoser\winPoser\bin\Debug\winPoser.pdb
+c:\users\edgar.carrizales\source\repos\winPoser\winPoser\obj\Debug\winPoser.csprojAssemblyReference.cache
+c:\users\edgar.carrizales\source\repos\winPoser\winPoser\obj\Debug\winPoser.Properties.Resources.resources
+c:\users\edgar.carrizales\source\repos\winPoser\winPoser\obj\Debug\winPoser.csproj.GenerateResource.cache
+c:\users\edgar.carrizales\source\repos\winPoser\winPoser\obj\Debug\winPoser.csproj.CoreCompileInputs.cache
+c:\users\edgar.carrizales\source\repos\winPoser\winPoser\obj\Debug\winPoser.exe
+c:\users\edgar.carrizales\source\repos\winPoser\winPoser\obj\Debug\winPoser.pdb
+c:\users\edgar.carrizales\source\repos\winPoser\winPoser\bin\Debug\HtmlAgilityPack.dll
+c:\users\edgar.carrizales\source\repos\winPoser\winPoser\bin\Debug\HtmlAgilityPack.pdb
+c:\users\edgar.carrizales\source\repos\winPoser\winPoser\bin\Debug\HtmlAgilityPack.xml
+c:\users\edgar.carrizales\source\repos\winPoser\winPoser\obj\Debug\winPoser.csproj.CopyComplete
+c:\users\edgar.carrizales\source\repos\winPoser\winPoser\bin\Debug\Newtonsoft.Json.dll
+c:\users\edgar.carrizales\source\repos\winPoser\winPoser\bin\Debug\Newtonsoft.Json.xml
