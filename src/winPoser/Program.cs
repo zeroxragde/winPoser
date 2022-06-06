@@ -45,6 +45,10 @@ namespace winPoser
                     Console.WriteLine("--composerD [version]                                                 Descarga una version especifica de composer");
                     Console.WriteLine("--pack [NOMBRE] [PHP VERSION] [AQUITECTURA] [COMPOSER VERSION]        Configura acceso rapido para ejecutar composer");
                     Console.WriteLine("--removepack [NOMBRE]                                                 Borra el Pack seleccionado");
+
+                    Console.WriteLine("-php [-v Especificar version a ejecutar, -arc Especificar aqrquitectura]   Ejecutar version de php por default");
+
+                    
                     Console.WriteLine("  ");
 
                     Console.WriteLine("-phpls Ver la lista de PHP encontrado en el sistema");
@@ -120,6 +124,98 @@ namespace winPoser
                 if (!File.Exists(Application.StartupPath+"\\configuracion.json")) {
                     Console.WriteLine("Executa --reloadPHP para que el sistema reconosca todas las versiones de PHP");
                     Environment.Exit(0);
+                }
+
+                if (args[0] == "-php") {
+                    int skip = 1;
+
+                    string phpversion = "7.3.25";
+                    string arcquit = "x64";
+
+                    if (args.Length >= 2) {
+
+                        if (args[1] == "-v")
+                        {
+                            phpversion = args[2];
+                            skip++;
+                            skip++;
+                        }
+                        try {
+                            if (args[3] == "-arc")
+                            {
+                                arcquit = args[4];
+                                skip++;
+                                skip++;
+                            }
+                        } catch {
+
+                        }
+
+
+                    }
+                   
+
+                    PHP p = my_config.getPHP(phpversion, arcquit);
+                    if (p == null)
+                    {
+                        Console.WriteLine("No se encontro la version especificada de PHP: " + phpversion);
+                        Environment.Exit(0);
+                    }
+
+                    args = args.Skip(skip).ToArray();
+                    phpv = p.path;
+
+                    string _comando = '"' + phpv + '"' + " ";
+                    string _argumentos = "";
+                    foreach (string argumento in args)
+                    {
+                        _argumentos += " " + argumento;
+                    }
+
+                    try
+                    {
+
+                        ProcessStartInfo procStartInfo = new ProcessStartInfo("cmd", "/c "+ _comando+" "+_argumentos);
+
+                        procStartInfo.RedirectStandardOutput = true;
+                        procStartInfo.UseShellExecute = false;
+                        //Indica que el proceso no despliegue una pantalla negra (El proceso se ejecuta en background)
+                        procStartInfo.CreateNoWindow = true;
+                        //Esconder la ventana
+                        procStartInfo.WindowStyle = ProcessWindowStyle.Hidden;
+                        //Inicializa el proceso
+                        Process proc = new Process();
+                        proc.StartInfo = procStartInfo;
+                        proc.Start();
+
+
+                        string standard_output = "";
+
+                        while ((standard_output = proc.StandardOutput.ReadLine()) != null)
+                        {
+                            if (standard_output.Contains("pause"))
+                            {
+                                break;
+                            }
+                            else
+                            {
+                                if (standard_output != "")
+                                {
+                                    Console.WriteLine(standard_output);
+                                }
+
+                            }
+                        }
+
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex);
+                        Environment.Exit(0);
+                    }
+
+                    Environment.Exit(0);
+
                 }
 
                 if (args[0] == "--composerD")
@@ -227,7 +323,7 @@ namespace winPoser
                 if (args[0] == "-p")
                 {
                     string phpversion = args[1];
-                    string arcquit = "64";
+                    string arcquit = "x64";
                     if (args[2] == "-a")
                     {
                          arcquit = args[3];
@@ -256,8 +352,6 @@ namespace winPoser
                     }
                     args = args.Skip(6).ToArray();
                 }
-
-  
 
                 string comando = '"' + phpv + '"'+" ";
                 string argumentos = "";
@@ -302,13 +396,10 @@ namespace winPoser
 
                 } catch (Exception ex) {
                     Console.WriteLine(ex);
-                    Application.Exit();
+                    Environment.Exit(0);
                 }
             } else {
-               
-               // Application.EnableVisualStyles();
-                //Application.SetCompatibleTextRenderingDefault(false);
-               // Application.Run(new Form1());
+                Environment.Exit(0);
             }
         }
 
