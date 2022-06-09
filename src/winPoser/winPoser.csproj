@@ -61,6 +61,7 @@
     <Compile Include="Configuraciones\Configuracion.cs" />
     <Compile Include="Configuraciones\Packs.cs" />
     <Compile Include="Configuraciones\PHP.cs" />
+    <Compile Include="Consola.cs" />
     <Compile Include="getComnposerFiles.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -95,7 +95,7 @@ namespace winPoser
                                     FileInfo[] subFiles = dir.GetFiles("*.exe");
                                     foreach (FileInfo subFile in subFiles)
                                     {
-                                        if ("php.exe" == subFile.Name)
+                                        if ("php-cgi.exe" == subFile.Name)
                                         {
                                             p.nombre = subFile.Name;
                                             p.path = subFile.FullName;
@@ -116,7 +116,7 @@ namespace winPoser
 
                     // serialize JSON to a string and then write string to a file
                     File.WriteAllText(Application.StartupPath+"\\configuracion.json", config_string);
-
+                    Console.WriteLine("Versiones de PHP actualizadas");
                  //   Console.WriteLine(config_string);
                     Environment.Exit(0);
                 }
@@ -251,10 +251,16 @@ namespace winPoser
                     pack.composer = args[4];
                     my_config.PACKS.Add(pack);
                     string config_string = JsonConvert.SerializeObject(my_config, Formatting.Indented);
-
                     // serialize JSON to a string and then write string to a file
-                    File.WriteAllText("configuracion.json", config_string);
-                    Console.WriteLine("Pack agregado y listo para usar");
+                    try
+                    {
+                        File.WriteAllText(Application.StartupPath + "\\configuracion.json", config_string);
+                        Console.WriteLine("Pack agregado y listo para usar");
+                    }
+                    catch {
+                        Console.WriteLine("Pack no se logro guardar");
+                    }
+
       
                     Environment.Exit(0);
                 }
@@ -263,7 +269,17 @@ namespace winPoser
                 {
                     if (my_config.removePack(args[1]))
                     {
-                        Console.WriteLine("PACK Removido correctamnete");
+                        string config_string = JsonConvert.SerializeObject(my_config, Formatting.Indented);
+                        try
+                        {
+                            File.WriteAllText(Application.StartupPath + "\\configuracion.json", config_string);
+                            Console.WriteLine("PACK Removido correctamnete");
+                        }
+                        catch
+                        {
+                            Console.WriteLine("Pack no se logro eliminar");
+                        }
+                        
                     }
                     Environment.Exit(0);
                 }
@@ -353,46 +369,20 @@ namespace winPoser
                     args = args.Skip(6).ToArray();
                 }
 
-                string comando = '"' + phpv + '"'+" ";
+                string comando ='"' + phpv + '"'+" ";
                 string argumentos = "";
                 foreach(string argumento in args)
                 {
                     argumentos += " " + argumento;
                 }
-
+                string phar = "composer_" + defaultComposer + ".phar";
+                string pharpath='"'+ Application.StartupPath + "\\composer\\" + phar + '"';
                 try {
 
-                    ProcessStartInfo procStartInfo = new ProcessStartInfo("cmd", "/c " + comando + Application.StartupPath + "\\composer\\composer_" + defaultComposer + ".phar "+ argumentos);
-                
-                    procStartInfo.RedirectStandardOutput = true;
-                    procStartInfo.UseShellExecute = false;
-                    //Indica que el proceso no despliegue una pantalla negra (El proceso se ejecuta en background)
-                    procStartInfo.CreateNoWindow = true;
-                    //Esconder la ventana
-                    procStartInfo.WindowStyle = ProcessWindowStyle.Hidden;
-                    //Inicializa el proceso
-                    Process proc = new Process();
-                    proc.StartInfo = procStartInfo;
-                    proc.Start();
-
-
-                    string standard_output = "";
-
-                    while ((standard_output = proc.StandardOutput.ReadLine()) != null)
-                    {
-                        if (standard_output.Contains("pause"))
-                        {
-                            break;
-                        }
-                        else
-                        {
-                            if (standard_output != "")
-                            {
-                               Console.WriteLine(standard_output);
-                            }
-
-                        }
-                    }
+                    string rcommand =  pharpath + " " + argumentos;
+                   // Console.WriteLine(comando);
+                   // Console.WriteLine(rcommand);
+                    Consola.runCommand(comando, rcommand);
 
                 } catch (Exception ex) {
                     Console.WriteLine(ex);
@@ -403,6 +393,5 @@ namespace winPoser
             }
         }
 
-        
     }
 }

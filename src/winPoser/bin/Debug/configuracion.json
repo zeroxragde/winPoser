@@ -9,62 +9,82 @@
         "path": "C:\\Program Files\\PHP\\v7.3\\php.exe"
       },
       "composer": "1.10.26"
+    },
+    {
+      "nombre": "MONITOR",
+      "php": {
+        "nombre": "php.exe",
+        "version": "7.2.26",
+        "arquitectura": "x64",
+        "path": "C:\\Program Files\\PHP\\v7.2\\php.exe"
+      },
+      "composer": "1.10.26"
+    },
+    {
+      "nombre": "CP",
+      "php": {
+        "nombre": "php.exe",
+        "version": "7.3.8",
+        "arquitectura": "x64",
+        "path": "C:\\Program Files\\PHP\\v7.364\\php.exe"
+      },
+      "composer": "1.10.26"
     }
   ],
   "PHP_INSTALLED": [
     {
-      "nombre": "php.exe",
+      "nombre": "php-cgi.exe",
       "version": "5.6.9",
       "arquitectura": "x86",
-      "path": "C:\\Program Files\\PHP\\v5.6\\php.exe"
+      "path": "C:\\Program Files\\PHP\\v5.6\\php-cgi.exe"
     },
     {
-      "nombre": "php.exe",
+      "nombre": "php-cgi.exe",
       "version": "5.6.9",
       "arquitectura": "x64",
-      "path": "C:\\Program Files\\PHP\\v5.664\\php.exe"
+      "path": "C:\\Program Files\\PHP\\v5.664\\php-cgi.exe"
     },
     {
-      "nombre": "php.exe",
+      "nombre": "php-cgi.exe",
       "version": "7.2.26",
       "arquitectura": "x64",
-      "path": "C:\\Program Files\\PHP\\v7.2\\php.exe"
+      "path": "C:\\Program Files\\PHP\\v7.2\\php-cgi.exe"
     },
     {
-      "nombre": "php.exe",
+      "nombre": "php-cgi.exe",
       "version": "7.3.25",
       "arquitectura": "x64",
-      "path": "C:\\Program Files\\PHP\\v7.3\\php.exe"
+      "path": "C:\\Program Files\\PHP\\v7.3\\php-cgi.exe"
     },
     {
-      "nombre": "php.exe",
+      "nombre": "php-cgi.exe",
       "version": "7.3.8",
       "arquitectura": "x64",
-      "path": "C:\\Program Files\\PHP\\v7.364\\php.exe"
+      "path": "C:\\Program Files\\PHP\\v7.364\\php-cgi.exe"
     },
     {
-      "nombre": "php.exe",
+      "nombre": "php-cgi.exe",
       "version": "5.6.31",
       "arquitectura": "x86",
-      "path": "C:\\Program Files (x86)\\PHP\\v5.6\\php.exe"
+      "path": "C:\\Program Files (x86)\\PHP\\v5.6\\php-cgi.exe"
     },
     {
-      "nombre": "php.exe",
+      "nombre": "php-cgi.exe",
       "version": "7.1.29",
       "arquitectura": "x86",
-      "path": "C:\\Program Files (x86)\\PHP\\v7.1\\php.exe"
+      "path": "C:\\Program Files (x86)\\PHP\\v7.1\\php-cgi.exe"
     },
     {
-      "nombre": "php.exe",
+      "nombre": "php-cgi.exe",
       "version": "7.2.26",
       "arquitectura": "x86",
-      "path": "C:\\Program Files (x86)\\PHP\\v7.2\\php.exe"
+      "path": "C:\\Program Files (x86)\\PHP\\v7.2\\php-cgi.exe"
     },
     {
-      "nombre": "php.exe",
+      "nombre": "php-cgi.exe",
       "version": "7.3.25",
       "arquitectura": "x86",
-      "path": "C:\\Program Files (x86)\\PHP\\v7.3\\php.exe"
+      "path": "C:\\Program Files (x86)\\PHP\\v7.3\\php-cgi.exe"
     }
   ]
 }

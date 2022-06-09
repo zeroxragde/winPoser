@@ -15,7 +15,7 @@ namespace winPoser.Configuraciones
         public string path = "";
         public Dictionary<string,string> getVersionAndArc(string path) {
             Dictionary<string, string> tmp = new Dictionary<string, string>();
-            string comando = '"' + path + '"'+" -i";
+            string comando = '"' + path.Replace("php-cgi.exe","php.exe") + '"'+" -i";
 
             ProcessStartInfo procStartInfo = new ProcessStartInfo("cmd", "/c " + comando);
 
