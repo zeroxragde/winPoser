@@ -326,6 +326,7 @@ namespace winPoser
                             Console.WriteLine(subFile.Name.Replace("composer_", "").Replace(".phar", ""));
                         }
                     }
+                    Environment.Exit(0);
                 }
 
                 if (args[0] == "-d")
